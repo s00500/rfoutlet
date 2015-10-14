@@ -1,11 +1,11 @@
 /*
   RCSwitch - Arduino libary for remote control outlet switches
-  Copyright (c) 2011 Suat Özgür.  All right reserved.
+  Copyright (c) 2011 Suat ï¿½zgï¿½r.  All right reserved.
 
   Contributors:
   - Andre Koehler / info(at)tomate-online(dot)de
   - Gordeev Andrey Vladimirovich / gordeev(at)openpyro(dot)com
-  
+
   Project home: http://code.google.com/p/rc-switch/
 
   This library is free software; you can redistribute it and/or
@@ -26,10 +26,10 @@
 #define _RCSwitch_h
 
 #if defined(ARDUINO) && ARDUINO >= 100
-    #include "Arduino.h"
+    //#include "Arduino.h"
 #else
-    #include <wiringPi.h>
-    #include <stdint.h>
+    //#include <wiringPi.h>
+    //#include <stdint.h>
     #define NULL 0
     #define CHANGE 1
 #ifdef __cplusplus
@@ -55,7 +55,7 @@ class RCSwitch {
 
   public:
     RCSwitch();
-    
+
     void switchOn(int nGroupNumber, int nSwitchNumber);
     void switchOff(int nGroupNumber, int nSwitchNumber);
     void switchOn(char* sGroup, int nSwitchNumber);
@@ -66,19 +66,19 @@ class RCSwitch {
     void sendTriState(char* Code);
     void send(unsigned long Code, unsigned int length);
     void send(char* Code);
-    
+
     void enableReceive(int interrupt);
     void enableReceive();
     void disableReceive();
     bool available();
 	void resetAvailable();
-	
+
     unsigned long getReceivedValue();
     unsigned int getReceivedBitlength();
     unsigned int getReceivedDelay();
 	unsigned int getReceivedProtocol();
     unsigned int* getReceivedRawdata();
-  
+
     void enableTransmit(int nTransmitterPin);
     void disableTransmit();
     void setPulseLength(int nPulseLength);
@@ -86,7 +86,7 @@ class RCSwitch {
     void setReceiveTolerance(int nPercent);
 	void setProtocol(int nProtocol);
 	void setProtocol(int nProtocol, int nPulseLength);
-  
+
   private:
     char* getCodeWordB(int nGroupNumber, int nSwitchNumber, boolean bStatus);
     char* getCodeWordA(char* sGroup, int nSwitchNumber, boolean bStatus);
@@ -100,7 +100,7 @@ class RCSwitch {
     void transmit(int nHighPulses, int nLowPulses);
 
     static char* dec2binWzerofill(unsigned long dec, unsigned int length);
-    
+
     static void handleInterrupt();
 	static bool receiveProtocol1(unsigned int changeCount);
 	static bool receiveProtocol2(unsigned int changeCount);
@@ -117,7 +117,7 @@ class RCSwitch {
 	static unsigned int nReceivedProtocol;
     static unsigned int timings[RCSWITCH_MAX_CHANGES];
 
-    
+
 };
 
 #endif
