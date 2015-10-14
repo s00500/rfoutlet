@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
     // Parse the firt parameter to this command as an integer
     int code = atoi(argv[1]);
 
-    if (wiringPiSetup () == -1) return 1;
+    //if (wiringPiSetup () == -1) return 1;
 	printf("sending code[%i]\n", code);
 	RCSwitch mySwitch = RCSwitch();
       //Pulse length depends on the RF outlets you are using. Use RFSniffer to see what pulse length your device uses.

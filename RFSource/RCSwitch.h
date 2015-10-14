@@ -29,7 +29,8 @@
     //#include "Arduino.h"
 #else
     //#include <wiringPi.h>
-    //#include <stdint.h>
+    #include <stdint.h>
+    #include <stdlib.h>
     #define NULL 0
     #define CHANGE 1
 #ifdef __cplusplus

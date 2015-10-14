@@ -14,8 +14,7 @@ int main(int argc, char *argv[]) {
      // for more information.
      int PIN = 2;
 
-     if(wiringPiSetup() == -1)
-       return 0;
+     //if(wiringPiSetup() == -1)return 0;
 
      mySwitch = RCSwitch();
      mySwitch.enableReceive(PIN);  // Receiver on inerrupt 0 => that is pin #2

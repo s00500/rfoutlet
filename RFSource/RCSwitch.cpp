@@ -102,6 +102,7 @@ void RCSwitch::setReceiveTolerance(int nPercent) {
 void RCSwitch::enableTransmit(int nTransmitterPin) {
   this->nTransmitterPin = nTransmitterPin;
   //LB
+  system("echo pinmode");
   //pinMode(this->nTransmitterPin, OUTPUT);
 }
 
