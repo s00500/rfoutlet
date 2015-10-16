@@ -364,6 +364,7 @@ void RCSwitch::transmit(int nHighPulses, int nLowPulses) {
         fd = open("/sys/class/gpio/gpio142/value", O_WRONLY);
         write(fd, "0", 1);
         close(fd);
+        usleep(this->nPulseLength * nLowPulses);
 
 if(disabled_Receive){
             this->enableReceive(nReceiverInterrupt_backup);
