@@ -102,7 +102,9 @@ void RCSwitch::setReceiveTolerance(int nPercent) {
 void RCSwitch::enableTransmit(int nTransmitterPin) {
   this->nTransmitterPin = nTransmitterPin;
   //LB
-  system("echo pinmode");
+  //hardcoding pin to gpio142
+  //system("echo 142 > /sys/class/gpio/export");
+  system("echo out > /sys/class/gpio/gpio142/direction");
   //pinMode(this->nTransmitterPin, OUTPUT);
 }
 
@@ -348,12 +350,22 @@ void RCSwitch::transmit(int nHighPulses, int nLowPulses) {
             this->disableReceive();
             disabled_Receive = true;
         }
+        int fd;
         //LB
         //digitalWrite(this->nTransmitterPin, HIGH);
         //delayMicroseconds( this->nPulseLength * nHighPulses);
         //digitalWrite(this->nTransmitterPin, LOW);
         //delayMicroseconds( this->nPulseLength * nLowPulses);
-        if(disabled_Receive){
+        fd = open("/sys/class/gpio/gpio142/value", O_WRONLY);
+        write(fd, "1", 1);
+        close(fd);
+        usleep(this->nPulseLength * nHighPulses);
+
+        fd = open("/sys/class/gpio/gpio142/value", O_WRONLY);
+        write(fd, "0", 1);
+        close(fd);
+
+if(disabled_Receive){
             this->enableReceive(nReceiverInterrupt_backup);
         }
     }
